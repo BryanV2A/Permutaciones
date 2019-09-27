@@ -1,20 +1,34 @@
 class Permutaciones:
 
-    # Fórmula: Pn = n!
+    # Fórmula: rPn = n! / (n - r)!
 
-    def permutacion(self, n):
+    def permutacion(self):
+
+        lista = {1, 2, 3, 4, 5, 6}
+        r = 3
+
+        p = Permutaciones()
+        n = p.factorial(len(lista))
+
+        if (r >= len(lista)):
+            resultadoDeR = 1
+        else:
+            resultadoDeR = p.factorial(len(lista) - r)
+
+        resultadoPermutacion = n / resultadoDeR
+        print(resultadoPermutacion)
+
+    def factorial(self, n):
 
         if (n == 0):
             return 1
 
         else:
-            return self.permutacion(n - 1) * n
+            return self.factorial(n - 1) * n
 
 def main():
-    
     ejecutar = Permutaciones()
-    r = ejecutar.permutacion(6)
-    print(r)
+    ejecutar.permutacion()
 
 if __name__ == '__main__':
     main()
