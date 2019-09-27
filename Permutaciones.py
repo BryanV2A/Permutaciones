@@ -2,21 +2,28 @@ class Permutaciones:
 
     # Fórmula: rPn = n! / (n - r)!
 
+    __lista = []
+    __r = 0
+    __resultadoPermutacion = 0
+
     def permutacion(self):
 
-        lista = {1, 2, 3, 4, 5, 6}
-        r = 3
+        self.__lista = {1, 2, 5, 6, 7, 8}
+        self.__r = 3
 
         p = Permutaciones()
-        n = p.factorial(len(lista))
+        n = p.factorial(len(self.__lista))
 
-        if (r >= len(lista)):
-            resultadoDeR = 1
+        if (self.__r >= len(self.__lista)):
+            r = 1
         else:
-            resultadoDeR = p.factorial(len(lista) - r)
+            r = p.factorial(len(self.__lista) - self.__r)
 
-        resultadoPermutacion = n / resultadoDeR
-        print(resultadoPermutacion)
+        self.__resultadoPermutacion = n / r
+
+        print(self.__resultadoPermutacion)
+
+        return self.__resultadoPermutacion
 
     def factorial(self, n):
 
@@ -27,6 +34,7 @@ class Permutaciones:
             return self.factorial(n - 1) * n
 
 def main():
+
     ejecutar = Permutaciones()
     ejecutar.permutacion()
 
